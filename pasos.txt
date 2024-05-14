@@ -1,0 +1,906 @@
+se crea un archivo main.js y se conecta este archico con el html, ante de terminar el head se  y e
+//Ya aprendimos cómo colocar un onclick dentro de un botón y crear nuestro primer código de JavaScript de una forma simple.
+
+Pero si observamos nuestro código HTML, nosotros creamos código JavaScript dentro de una etiqueta HTML, es decir, creamos JavaScript dentro del HTML.
+
+Esto también nos recuerda cuando trabajábamos con CSS Inline. Sabemos que no es una buena práctica utilizar CSS Inline porque es difícil aplicar los mismos estilos y que queden iguales para todas las etiquetas. Sucede lo mismo con JavaScript.
+
+La forma correcta de trabajar con JavaScript es con un archivo externo, aparte del HTML, separando cada uno de ellos.
+
+Vale la pena destacar que cada lenguaje tiene sus responsabilidades. El HTML es para las estructuras de las páginas, de las aplicaciones, todo lo que es el cuerpo de la aplicación. El CSS es responsable de los estilos, todo lo que es la organización de los elementos, la disposición de los elementos en la pantalla. Y el JavaScript es responsable de la funcionalidad y el dinamismo, esa parte lógica.
+
+Para escribir correctamente nuestro JavaScript, voy a eliminar el onclick que tenemos aquí dentro del botón. Y voy a crear ese archivo externo, donde vamos a colocar todo nuestro código JavaScript.
+
+Para eso, en el proyecto, en la parte de arriba, donde dice "Nuevo archivo", donde está el ícono de hoja con el símbolo de más, clico allí. Y voy a crear ese archivo que se va a llamar main.js.
+
+Aquí se abre el archivo main.js. Main significa principal, viene del inglés y se llama así por una convención de programadores, donde se estableció que así se iban a organizar las estructuras de los proyectos. También facilita la vida para entender la estructura o cómo están organizados los proyectos y los archivos.
+
+Ahora que tengo este archivo main.js, necesitamos conectar este archivo main.js a nuestro index.html. ¿Y cómo hacemos eso? Lo hacemos de la misma forma como lo haríamos aquí con estos enlaces de archivos externos, como en el caso del CSS.
+
+Pero, como este es un archivo JavaScript, tenemos una etiqueta específica para esto, que es la etiqueta <script></script>. Aquí ya está apareciendo con el autocompletar del Visual Studio.
+
+Esta etiqueta <script></script>tiene un atributo importante que es el source o src. Eso significa recurso. Entre comillas dobles, voy a colocar el camino, o sea, dónde está ese archivo, cuál es el archivo que voy a enlazar o conectar. Entonces aquí voy a llamar main.js. Así ya tenemos ese enlace del archivo nuevo dentro de nuestro HTML. coloca un <script src="main.js"></script>
+
+¿Y cómo podemos saber o tener seguridad de que esta conexión está sucediendo? Podemos venir a nuestro archivo main.js nuevo, y utilizar aquella funcionalidad que vimos en el video pasado del alert(). ¿Para qué? Para saber si existe esta conexión.
+
+Voy a llamar aquí mi alert y vamos a hacer nuestro primer hola mundo. Entonces voy a abrir paréntesis y comillas simples y voy a escribir 'Hola Mundo'.alert('Hola Mundo')
+
+Perfecto, vamos a venir aquí al navegador. Ya debería estar apareciendo aquí mi mensaje de 'Hola mundo'. Está funcionando. Así podemos probar que esta conexión entre el HTML y el JavaScript está funcionando.
+
+Ahora, volviendo aquí a nuestro código, que ya sabemos que está funcionando nuestra conexión, tenemos un nuevo desafío. ¿Cómo hacemos ahora para utilizar o acceder a un elemento? En este caso, por ejemplo, un botón que está dentro de nuestro HTML desde nuestro archivo main.js. Para esto te veo en el siguiente video.
+
+//En esta aula, vamos a entender cómo buscamos un elemento que está dentro del HTML y lo colocamos dentro del JavaScript. Para ello, me apoyaré en una herramienta que las personas programadoras utilizan mucho, que es el DevTools.
+
+En el navegador, voy a dar clic derecho con el botón del mouse, aparecerá esta ventana y vamos a la última opción aquí, "Inspeccionar". En el lado derecho, se abrirá una nueva pestaña con varias opciones. A mí me aparece en el lado derecho esta pestaña, pero puede ser que aparezca aquí abajo o del lado izquierdo. Eso depende de la configuración de su navegador.
+
+Entonces nos aparece esta pestaña, voy a dar zoom aquí para que puedan ver un poco mejor. En esta pestaña, en la parte superior, tenemos esta pestaña que dice "Elements" (Elementos). ¿Y qué tiene Elements dentro? Toda la estructura de nuestro Alura Midi, todos nuestros elementos.
+
+En la parte de abajo, también tenemos esta pestaña que se llama "Styles" (Estilos), donde tenemos toda la estilización que está sucediendo dentro de Alura Midi. Tenemos los colores, el posicionamiento - esta pestaña también nos ayuda mucho cuando estamos trabajando con la estilización.
+
+En la parte superior, al lado de "Elements", tenemos "Console" que es la consola. Aquí vamos a poder ejecutar todo lo que sería ese código JavaScript en nuestra aplicación.
+
+Para conseguir o buscar un elemento, necesitamos navegar por el DOM. ¿Y qué es el DOM? Es el Documents Object Model, DOM por sus siglas. La traducción sería Modelo de Objeto del Documento. Es una interfaz de programación para los documentos HTML y XML.
+
+¿Qué sería esto? Imagínense que nuestra página web es un libro, y el DOM viene siendo el índice detallado de ese libro. Entonces, con ese índice, podemos encontrar todos los capítulos que están dentro de nuestro libro.
+
+Entonces, el DOM es una representación estructurada del documento. Él define de qué forma los programas pueden acceder a él para realizar modificaciones en su estructura, en sus estilos, en el contenido. Imagínense que dentro de nuestra página tenemos un párrafo, un elemento, podemos acceder a él y modificarlo utilizando el DOM.
+
+¿Y cuál es la estructura del DOM? Cada elemento en una página web es representado como un objeto en el DOM. Entonces, si tenemos un párrafo, imágenes, un título, todo eso es representado como un objeto dentro del DOM.
+
+Y estos objetos están organizados de una forma jerárquica, similar a un árbol. Por eso que muchas veces cuando buscamos DOM en Internet o en Google, nos aparece el árbol DOM. Es muy común llamarlo de esa forma.
+
+¿Y cómo sería esta estructura del DOM? Aquí tengo un ejemplo visual de esa estructura. Antes del document, tenemos el window, que es la ventana del navegador.
+
+Luego del window viene el document. Y después del document viene el root element (elemento raíz), que es el HTML. De allí se abren dos ramas: una del lado derecho y una del lado izquierdo.
+
+En el lado izquierdo, tenemos todo lo que es la cabecera, esos elementos de la estructura base de las páginas web. Y del lado derecho tenemos lo que sería el cuerpo de las páginas. Ahí tenemos el body y todos los elementos del body.
+
+Entonces, el DOM no es más que un mapa, una representación de todo el documento HTML, de nuestras páginas web. Y quien construye el DOM es el navegador. JavaScript lo utiliza para acceder a esos elementos HTML.
+
+Entonces, el document es el objeto con el que podemos acceder a los elementos dentro del HTML. Y utilizando el punto es que podemos acceder a esos documentos. Pero vamos a verlo mejor en el código.
+
+Aquí nuevamente estamos con el navegador, en DevTools, en la pestaña de "Console". Como estaba mencionando, el document representa todo nuestro documento HTML. Entonces, si escribo document, ya se me sombrea un poco la página a la izquierda. Voy a dar clic allí en document y le voy a dar "Enter".
+
+Cuando le doy "Enter", él ya me trae una flecha. Si la doy clic, me está desglosando todo lo que sería este documento HTML.
+
+Aquí tenemos el <head> (cabecera) y el <body> (cuerpo). Esta sería toda la estructura de nuestro documento, nuestro árbol DOM. Cada página web tiene su formato de árbol DOM porque contiene diferentes elementos.
+
+Entonces ya tengo todo mi documento. Para acceder a métodos dentro del DOM, lo hago utilizando el punto. Entonces document. y este me va a dar una serie de métodos o funcionalidades que podría utilizar para realizar modificaciones, borrar elementos, alterar cosas dentro de la aplicación.
+
+En este caso, como queremos buscar un elemento, voy a utilizar el método querySelector que en su traducción sería "buscar un selector". Entonces esa es su funcionalidad. Voy a escribir aquí document.querySelector. En la "S" va con mayúscula.
+
+Tenemos que tener cuidado aquí con esta sintaxis porque si la escribimos de una manera equivocada, la escribimos en minúsculas, nos va a dar un error. Porque no es así que se llama el método, tenemos que seguir la sintaxis del lenguaje. Entonces document.querySelector. Abro y cierro paréntesis y abro comillas simples adentro de mis paréntesis.
+
+Dentro de las comillas, voy a pasar el nombre de ese selector que quiero. Puedo utilizar clases, puedo utilizar el nombre de la etiqueta, puedo utilizar id para conseguir ese elemento. De la misma forma como utilizamos en CSS las clases para utilizar, aquí en JavaScript podemos utilizar las clases también para buscar un elemento.
+
+Entonces, aquí nuestro código, podemos llamar tanto por la clase tanto por el nombre de la etiqueta. Puede ser que yo diga button, si yo doy "Enter", él me va a traer aquí el primer botón, que es el de la tecla Pom.
+
+También puedo usarlo por la clase. Entonces escribo document.querySelector, abro y cierro paréntesis, y comillas simples y aquí dentro puedo colocar punto (.) para tener referencia a las clases y utilizar la clase tecla_pom. La voy a copiar y la voy a pegar aquí en mi código.
+
+Vean que aquí yo coloqué el querySelector en minúscula, no seguí la sintaxis del lenguaje y ya me dijo que hay un error, no es una función. Entonces tenemos que estar atentos a la escritura.
+
+Vamos a volver a escribir ahora de la forma correcta document.querySelector con "S" mayúscula. Entre paréntesis y comillas simples, voy a colocar punto y pegar el nombre de la clase que es tecla_pom. Vean que ya aquí abajo me trae ese elemento.
+
+Si yo doy "Enter", él me va a traer el elemento que es esa primera tecla, la tecla Pom.
+
+Ya sabemos que con este document.querySelector() y el nombre de nuestra clase él nos va a retornar ese elemento que queremos que es esa tecla Pom.
+
+Ya que sabemos que este código está funcionando, vamos a llevarlo a nuestro archivo main.js. Entonces yo voy a venir al main.js, voy a quitar este alert que tenemos aquí y voy a escribir este código que hicimos, que es document.querySelector. El Visual Studio Code ya lo autocompleta.
+
+Abro paréntesis, abro comillas simples y aquí dentro voy a colocar mi clase que es tecla_pom. Vamos a revisar aquí en el index.html, tecla_pom, sería esta nuestra clase. Al final, voy a colocar un punto y coma. 
+en main.js: 
+document.querySelector('.teclapom');
+
+Ya sabemos que con este código podemos traer un elemento que está dentro de nuestro HTML para utilizarlo con JavaScript. Después de guardarlo, vamos de nuevo al navegador y vamos a recargar la página.
+
+Si yo clico en Pom no sucedió nada, pero no tenemos tampoco ningún error aquí en la consola. Nos está funcionando nuestro código.
+
+Para agregarle una funcionalidad que sería la de reproducir un sonido a esta tecla, te veo en el siguiente video.
+
+//En el aula anterior, vimos cómo buscamos un elemento o traemos un elemento que está dentro del HTML para utilizarlo en JavaScript. Y, con eso, nosotros conseguimos agregarle las funcionalidades. Pero también necesitamos entender cómo hacemos para reproducir un sonido que está cargado dentro de una etiqueta de audio usando JavaScript.
+
+Para eso, vamos aquí en el navegador. Estoy aquí con en DevTools abierto, en la parte superior. Podemos ver que tengo la pantalla de elementos y dentro de la pantalla de elementos de DevTools. Aquí tenemos, dentro del Alura Midi, están nuestras etiquetas de audio. Si recordamos los videos anteriores, sabemos que esas etiquetas de audio tienen dentro de ellas los controles para reproducir esos sonidos. Para utilizar esos sonidos, esos controles de la etiqueta de audio, necesitamos acceder a ella. ¿Y cómo lo hacemos? Utilizando el DOM.
+
+Para eso, voy a venir a la consola, a la pantalla de console, aquí en la parte de arriba del DevTools. Y voy a estar accediendo a esa etiqueta. ¿Cómo lo hago? Nuevamente con el document y utilizando el querySelector. Perfecto. Abro y cierro paréntesis. Abro y cierro mis comillas simples. Dentro de las comillas simples, aquí en los paréntesis del querySelector, voy a estar colocando el ID que tienen estas etiquetas de audio.
+
+Si venimos aquí, en Visual Studio Code, en el archivo index, en la línea 36, donde está la primera etiqueta de audio, vemos que esas etiquetas tienen un ID. El ID que tienen esas etiquetas, en este caso, es de sonido_tecla_pom. Voy a estar copiando ese ID, voy a seleccionarlo, "Ctrl + C", y lo voy a llevar aquí a la consola del navegador. Aquí en el navegador, voy a colocar numeral para informar que esto es un ID. Con el numeral, indicamos que es un ID. Y con el teclado, voy a apretar "Ctrl + D" para pegar aquí ese selector. Cuando ya pego el selector, me está trayendo, si doy "Enter", me está trayendo ese elemento de audio. Tenemos nuestro elemento de audio aquí. Pero yo necesito acceder a los métodos, a los controles de esas etiquetas de audio.
+
+¿Cómo hago para acceder a ella? Puedo repetir este código que tengo aquí. Entonces, como voy a dar "Ctrl + C", voy a venir aquí, "Ctrl + V", en el teclado, y para acceder a los métodos que están dentro de este elemento, lo hago con el punto nuevamente. Al yo colocar el punto, escribir el punto aquí en el código, me aparece esta lista de todos los métodos que yo podría estar utilizando para reproducir, dentro de ese elemento, todos esos métodos. Para reproducir los sonidos, aquí, puedo estar utilizando el método play. Al yo escribir play, ya me aparece aquí en la parte de abajo, en la línea siguiente, una F, indicándome que esto es una funcionalidad que tiene este método. Entonces, es una funcionalidad. Puedo abrir y cerrar paréntesis aquí, indicando que esto es una funcionalidad.
+
+Cuando yo de enter en este código, va a estar reproduciendo el sonido de la tecla pom. Entonces, lo reproduzco. Y si vemos en la línea siguiente, debajo del código que acabamos de reproducir, ahora, nos está devolviendo una promesa. No vamos a estar trabajando con esto aquí. Entonces, no necesita preocuparse por este código. Entonces, perfecto. Con este código, en el document.querySelector, nuestro id, sonido tecla pom, y la funcionalidad .play, nosotros podemos acceder a esos controles que están dentro de este elemento de audio y reproducir el sonido utilizando esa funcionalidad del play. Ahora que sabemos que este código funciona, podemos llevarlo al Visual Studio Code.
+
+Vamos aquí al Visual Studio Code. Voy a entrar en el archivo main.js y voy a estar escribiendo este código. Voy a colocar aquí document., voy a apoyarme en el autocompletado de Visual Studio. document.querySelector, abro y cierro paréntesis, abro y cierro comillas. Coloco numeral acá. Voy nuevamente al index.html en la línea 36. Está el id que estoy utilizando, sonido y un bajo, tecla pom. Voy a dar "Ctrl + C" para copiarlo. Y vengo aquí al main.js, en la línea 3, dentro del querySelector, y voy a pegar ese id. Y al final aquí voy a estar llamando a mi funcionalidad con el punto, voy a llamar a play, abro y cierro mis paréntesis, y al final colocamos el punto y coma. Punto y coma en JavaScript es opcional, pero nunca está de más utilizarlo. Es mejor utilizarlo para no tener ningún tipo de problema o error:
+document.querySelector('#sonido_tecla_pom').play();
+
+Perfecto, vamos al navegador nuevamente para probar si este código está funcionando. Y tenemos un error aquí. La consola está mostrando estas letras en rojo indicándome un error. Aquí, este error lo que me está diciendo es que esta propiedad es nula. Me dice que no consigue leer el play. Y este error fue colocado aquí de forma intencional. Este error está de forma intencional para entender dónde es el lugar correcto de colocar la etiqueta script dentro del index.html.
+
+Vamos al código. En nuestro index.html, tenemos la etiqueta script en la línea 16, dentro del head de nuestra página, del head, de la cabecera, donde están los links, donde están las etiquetas de la página. Correcto, entonces, ¿qué sucede? Cuando el navegador está construyendo nuestra aplicación, en este caso, cuando está ejecutando el código, él viene mirando de arriba hacia abajo. Entonces, él lee aquí, lee aquí, continúa leyendo todas esas líneas, llega en la línea 16.
+
+Cuando llega en la línea 16, él entra dentro de nuestro archivo main.js. Y en ese archivo main.js, nosotros tenemos elementos que serían los selectores aquí que están dentro del body de nuestra aplicación. Están en el cuerpo de la aplicación, están en el body. De la línea 18 a la línea 47. Entonces, él viene leyendo hasta acá, entra en la línea 16, y ahí lo que dice es que no puede leer esos elementos.
+
+¿Por qué? Porque esos elementos aún no han sido cargados. Las etiquetas de botón, los botones no han sido cargados todavía y los audios tampoco. Entonces, por eso, es que él no consigue leerlo. El lugar correcto, entonces, en este caso, de colocar nuestra etiqueta script, sería al final del body, en la línea 46, justo antes de cerrar la etiqueta body. Yo voy a cortar esta etiqueta script aquí para dar "Ctrl + X". Y voy a venir con "Ctrl + V" y voy a poner aquí al final, antes del cierre de la etiqueta body, en la línea 46. Así, ya no tendremos este problema. ¿Por qué? Porque ya nuestro navegador va a cargar todos los elementos, va a venir aquí, va a leer todo nuestro archivo HTML, los elementos, y al final es que va a entrar en nuestro archivo main.js y va a ejecutar este código que tenemos aquí dentro, porque ya los elementos están cargados.
+
+Entonces, ¿qué sucede? Cuando nuestro main.js, nuestro archivo script, depende de elementos que están en el cuerpo de las aplicaciones, el lugar correcto de colocar la etiqueta script es al final, antes del cierre del body. Si nuestro código JavaScript no depende de los elementos que están en el cuerpo de las aplicaciones, podemos colocar la etiqueta script en la parte de encima. Perfecto. Con esto, ya debería estar resolviéndose este error. Vamos al navegador nuevamente. Voy a actualizar acá. Y ahora está apareciendo otro error. Pero este es un error peculiar y típico por la aplicación que estamos realizando. Y para resolver este error, te veo en el siguiente video.
+
+
+//Como vimos en el video anterior, tenemos un error apareciendo en la consola dentro del DevTools de la aplicación Alura Midi. Y si clicamos sobre la tecla Pom, no se está reproduciendo el sonido que esperábamos que fuera reproducido.
+
+Vamos a entender este error. Voy a copiar el error que está apareciendo en la consola. Voy a venir a Chrome, en una nueva pantalla, y voy a buscar el traductor de Google. Voy a pegar con "Ctrl + V" el error que está apareciendo aquí para entender que lo que está diciendo. Me dice "play falló porque el usuario no interactuó con el documento primero".
+
+¿Esto sucede por qué? Porque imagínese que nosotros accedemos a una página web y esta está reproduciendo un sonido sin nosotros haber interactuado con la página. Y ese sonido que la página web está reproduciendo nosotros no conseguimos pausarlo. Sería muy incómodo, sería molesto también, como usuarios, nosotros de la página, no poder pausar ese sonido. Por eso es que los navegadores tienen políticas o normativas que impiden la ejecución de este tipo de código, que es el código que nosotros estamos prácticamente intentando reproducir con el Alura Midi. Por eso nos aparece este error.
+
+Si pensamos en la lógica del Alura Midi, nosotros queremos que el usuario consiga reproducir un sonido cuando haga clic. Por ejemplo, aquí sobre la tecla Pom y se reproduce el sonido del Pom. Para hacer esto, nosotros necesitamos guardar este código que creamos aquí en la línea 3 del play. En la línea 3 aquí dentro de nuestro archivo main.js, que contiene play dentro de una función. Porque con una función nosotros podremos ejecutar ese código y llamarlo cuando nosotros queramos. Esta función no es más que un bloque de código que realiza una operación.
+
+Para eso, voy a venir a la línea 1 dentro del archivo main.js. Y voy a estar creando nuestra primera función. Utilizando la palabra reservada function. Aquí con el autocompletar del Visual Studio Code coloco function. Y a esta función yo necesito darle un nombre. Y un nombre que haga sentido con lo que va a realizar esta función con lo que va a ejecutar esta función.
+
+Nosotros queremos guardar el código de la línea 6 que reproduce el play o que da play al sonido dentro de esta función. Entonces vamos a darle el nombre de playSonidoPom, que va a ser lo que va a reproducir mi función. Y la sintaxis de la función es la siguiente. Después del nombre abrimos y cerramos paréntesis. Y después de los paréntesis abrimos y cerramos llaves. Y dentro de las llaves nosotros vamos a colocar ese bloque de código que queremos que sea ejecutado. Voy hasta seleccionar aquí el código que va a estar en la línea 8 que es este document.querySelector('#sonido_tecla_pom').play(); Porque fuimos creando aquí espacio. Y lo voy a arrastrar hasta dentro de la función. Solo manteniendo presionado el código lo arrastro hasta la parte de arriba. Y allí conseguimos guardar ese código que reproduce el play de nuestra función o de nuestro sonido dentro de la función playSonidoPom. Quedando asi 
+
+function playSonidoPom () {
+    document.querySelector('#sonido_tecla_pom').play();
+}
+
+
+Perfecto, vamos aquí al navegador. Nuevamente, a ver nuestra Alura Midi. Si clicamos sobre el botón de la tecla Pom. No está sucediendo nada. ¿Por qué? Porque nuestra función fue creada. Más no está siendo utilizada. No está siendo llamada. Pero yo hasta puedo venir aquí a la consola. Dentro de la consola y llamar o escribir el nombre de la función, que es playSonidoPom. Ya aquí la consola me está indicando. En la primera opción al escribir play. Me está dando el nombre de esa función que fue creado dentro del archivo main.js. Entonces selecciono playSonidoPom, abro y cierro paréntesis porque es una función. Para poder ejecutarlo, llamarla aquí dentro de la consola, necesito abrir y cerrar paréntesis. Y al dar "Enter" va a reproducirme el sonido. Allí reprodujo el sonido de la tecla Pom.
+
+Para agregar esta función, para que sea llamada cuando clicamos en el botón, en la tecla Pom, te veo en el siguiente video.
+
+//Como vimos en el vídeo anterior, ya sabemos cómo obtener un elemento, un botón, utilizando JavaScript y también cómo reproducir un sonido que está dentro de una etiqueta de audio utilizando nuestra propia función, pero ahora tenemos un desafío, que es cómo unimos el clic aquí del botón de la tecla Pom a la función que fue construida de playSonidoPom.
+
+Nosotros hasta ya vimos en el aula 1 cómo podríamos hacer eso, por eso vamos aquí al Visual Studio Code. En la línea 24, donde está la primera tecla del botón de la tecla Pom, yo podría estar agregando aquí dentro del button, doy espacio, el onclick, voy a completar aquí con el Visual Studio Code, el onclick y estaría llamando a la función dentro de las comillas, colocar el nombre de la función playSonidoPom, abro y cierro paréntesis, porque es una función, este código va a funcionar.
+
+Si volvemos al navegador, yo actualizo, si clicamos en la tecla Pom, va a reproducir el sonido, está realizando la reproducción del sonido, pero sabemos que este código, colocar el onclick dentro de la tecla button no es una buena práctica, porque eso evita que nuestras aplicaciones puedan ser mantenidas en el tiempo, puedan ser escalables y genera una serie de problemas. Lo correcto es colocar el onclick dentro del archivo main.js, aquí dentro, y nosotros aquí en el archivo main.js tenemos un código que ya realizamos en la línea 6, que es este document.querySelector('.tecla_pom'), este código nos trae la tecla Pom, podríamos continuar este código.
+
+¿Cómo lo hacemos? Si pongo punto aquí al final del paréntesis, después del selector, voy a estar accediendo a los métodos o atributos que tiene este elemento, me aparece la lista de atributos, de métodos que yo podría estar utilizando, aquí dentro, después del punto podríamos estar llamando al onclick, de la misma forma como lo hacemos en el HTML, podemos hacerlo aquí dentro del JavaScript, aquí traemos el atributo onclick, como el onclick es un atributo, necesitamos pasarle un valor, y para pasarle o asignarle un valor, lo hacemos utilizando el igual, el símbolo de igual, entonces punto onclick igual, y con eso nosotros asignamos un valor.
+
+¿Qué valor le vamos a estar asignando? Nuestra función playSonidoPom, voy a llamar aquí playSonidoPom, ya voy a autocompletar con Visual Studio, abro y cierro paréntesis, y luego punto y coma, cuando yo hago esto ya me está reproduciendo el sonido, me reproduce un sonido aquí dentro de la aplicación, vamos al navegador, si actualizamos, ahora me está dando un error.
+
+document.querySelector('.tecla_pom').onclick = playSonidoPom;
+
+¿Por qué me da este error? El mismo error que ya vimos en el video pasado, que me dice que se está intentando ejecutar un sonido o realizar un sonido sin que el usuario haya interactuado con la página, ¿entonces porque sucede eso? Por lo mismo, porque estamos intentando reproducir el sonido en la tecla Pom, sin que el usuario haya hecho clic en el botón.
+
+¿Cómo podemos corregir esto? Volvamos al código, aquí en el archivo main.js, en la línea 6 donde estábamos trabajando, yo puedo resolver esto quitando los paréntesis de la función, cuando llamo aquí a playSonidoPom, si yo elimino los paréntesis, este error debería desaparecer, vamos a probar acá, nuevamente al navegador, actualizo, ya no tenemos el error, y si doy clic en la tecla Pom, reproduce el sonido, entonces si queremos guardar una función dentro de un atributo onclick, necesitamos quitarle lo que serían esos paréntesis para que ya no se ejecute inmediatamente, con eso conseguimos guardar la referencia de la función, más evitamos que ya se ejecute inmediatamente.
+
+Y para continuar agregando las funcionalidades ahora a todos los botones de nuestro Alura Midi, te veo en el siguiente video.
+
+//En la clase anterior, vimos cómo podíamos reproducir el sonido de una etiqueta de <audio> y pasar el control de la reproducción a la tecla Pom dentro de Alura Midi.
+
+    Pero ahora, nos encontramos con un nuevo desafío, ¿cómo repetimos esta misma acción para todas las teclas de Alura Midi? Es decir, ¿cómo lo hacemos para la tecla Clap, para la tecla Tim, y así sucesivamente?
+    
+    Para esto, volvamos a Visual Studio Code. Con lo que hemos aprendido hasta ahora, ¿qué podríamos hacer? Podríamos copiar este código que tengo en main.js, de la línea 1 a la 6, presiono "Ctrl + C", me posiciono en otra línea, y presiono "Ctrl + V", copio y pego este código.
+    
+    Aquí tendríamos que hacer modificaciones para cambiar el nombre de nuestra función, también cambiar el nombre del sonido aquí, del ID, en la línea 9, y en la línea 12, tendríamos que cambiar también el nombre del selector, y también el nombre de la función.
+    
+    Probemos el código. Entonces, voy a llamar a playSonidoClap, que sería la tecla siguiente. Vamos al index.html, veamos cuál sería el selector de audio de la tecla Clap, en la línea 41. Vamos a seleccionar el ID, que es sonido_tecla_clap, y presionar "Ctrl + C". Ahora, vengo al main.js, y aquí en la línea 9, dentro del querySelector, voy a cambiar el ID.
+    
+    En lugar de #sonido_tecla_pom, voy a tomar el de la tecla Clap. Entonces ahora tenemos querySelector(#sonido_tecla_clap).play().
+    
+    Y en la línea 12, dentro del querySelector, también necesito cambiar este selector, el de la tecla Pom por la tecla Clap. Nuevamente, vamos al index.html y vamos a buscar la tecla Clap. En la línea 25, tenemos este selector. Voy a copiarlo con "Ctrl + C", vengo al main.js, dentro de los paréntesis del querySelector, y voy a pegar tecla_clap.
+    
+    Entonces, tendremos document.querySelector('.teclaClap'). Y aquí, si continúa, .onclick, igual, y el nombre de la función, lo cual tendríamos que cambiar, porque ya no es playSonidoPom, ahora sería playSonidoClap. Y aquí ya está autocompletando.
+    
+    Perfecto, tenemos ese código. Vamos a probar a ver si funciona. Vamos al navegador nuevamente. Voy a actualizar la página. Si doy clic sobre el botón de la tecla Clap, va a funcionar. Tenemos un sonido. Volvamos aquí al Visual.
+    
+    function.playSonidoClap (){
+    document.querySelector('#sonido_tecla_clap').play();
+    }
+    document.querySelector('tecla_clap').onclick = playSonido Clap;
+
+    En este código, ¿qué está sucediendo? Estamos repitiendo el código. Tenemos la misma estructura para la función playSonidoPom y para la función playSonidoClap.
+    
+    Es una repetición de código. Esto no es recomendable, porque imagínese que tenemos un Alura Midi con 50 teclas. Tendríamos que copiar y pegar este código y actualizarlo para todas esas teclas. Esto no es sostenible en el tiempo y nos genera una repetición de código que podríamos optimizar de otra forma o con otra construcción de código.
+    
+    Entonces, necesitamos automatizar esta funcionalidad para trabajar con múltiples elementos. ¿Qué quiero decir con esto? Seleccionar todas las teclas del Alura Midi a la vez, en lugar de seleccionar solo una tecla, como estamos haciendo aquí, por ejemplo, en la línea 5 y en la línea 12, que estamos seleccionando tecla por tecla y pasándola aquí con la función. Podemos optimizarlo.
+    
+    Para esto, voy a comentar este código, porque no lo vamos a utilizar. Para comentar, es con la doble barra (//). También podría seleccionar todo el código, mantengo el clic presionado, vengo aquí en "Editar", en la parte superior de Visual Studio Code. Voy hasta "Alternar bloque de comentario" y ahí me comenta todo ese bloque de código.
+
+    //    function.playSonidoClap (){
+    /*    document.querySelector('#sonido_tecla_clap').play();
+        }
+        document.querySelector('tecla_clap').onclick = playSonido Clap;
+    */
+    
+    Entonces, voy a dar espacio aquí. ¿Qué puedo hacer ahora? Para seleccionar todas las teclas a la vez, existe una funcionalidad dentro de JavaScript. Vamos a verlo en la consola.
+    
+    Vengo al navegador, estoy en la parte superior, me posiciono en la pestaña de consola, y voy a llamar a mi documento. Escribo document y un punto. En lugar de utilizar el querySelector, voy a utilizar el querySelectorAll. Se escribe así, querySelector, igual que el otro, solo que al final vamos a ponerle All.
+    
+    ¿Qué hace este querySelectorAll? Me trae todos los elementos que tienen el mismo selector que voy a informar dentro de lo que serían los paréntesis del querySelectorAll(). Porque el querySelector solo me trae el primer selector que consigue de ese elemento. El primer elemento con ese selector. En cambio, el querySelectorAll me trae la lista de todos esos elementos.
+    
+    Vamos a verlo. Abro paréntesis, abro mis comillas simples y voy a buscar. Vamos a la pestaña "Elements", en la parte superior del DevTools. Vamos a ver, dentro de la <section>, lo que tenemos. ¿Cuáles son los selectores que tenemos en nuestras teclas?
+    
+    Tenemos un selector, además del <button> que se repite aquí, que es la etiqueta, que sabemos que no es una buena opción trabajar con los nombres de las etiquetas. Tenemos una clase que se repite para todas las teclas, que es esta que se llama tecla.
+    
+    Entonces tenemos aquí dentro de cada botón, nos dice class=tecla tecla_pom, class=tecla tecla_clap, y así sucesivamente para todas las teclas del Alura Midi. Puedo utilizar esa clase tecla dentro del querySelectorAll para que él me traiga todos esos elementos. Vamos a ver.
+    
+    Si pongo .tecla y doy "Enter", él me trae una lista de elementos. ¿Y cómo sabemos que esto es una lista? Si vemos en la pantalla aquí, nos muestra NodeList, abre corchetes, button.tecla.teclapom, button.tecla.teclaclap - me está trayendo todas las teclas.
+    
+    Entonces, abre corchetes y cierra corchetes es un indicativo de que estamos trabajando con una lista. Si hacemos clic sobre el NodeList, me muestra todos los elementos que tenemos dentro de esa lista y me da los índices de la lista. Tenemos aquí los números y el tamaño, que son nueve teclas que tenemos acá.
+    
+    Ahora podemos trabajar con esto. Ya que sabemos que este código funciona, podemos llevarlo a nuestro archivo main.js. Entonces vamos al Visual Studio Code. También voy a comentar esta línea 5 que tenemos acá, porque no vamos a utilizar ese código. Escribo dos veces la barra, así queda comentada esa línea y voy a dar espacio aquí.
+    
+    Voy a escribir ahora el código que colocamos en la consola, que es document.querySelectorAll. Me está autocompletando. Abro paréntesis, abro comillas simples y utilizo mi selector .tecla. Perfecto. Ahora, sabemos que este código traerá toda la lista de elementos.
+    
+    document.querySelectorAll('.tecla')
+
+    En la próxima clase, vamos a agregar las funcionalidades a nuestras teclas del Alura Midi.
+
+
+//En el video anterior, capturamos todas las teclas de Alura Midi a la vez. Con esto, obtuvimos una lista de teclas, la que tenemos en el lado derecho, dentro de DevTools, en la consola. Tenemos los 9 elementos, el NodeList.
+
+Ahora, necesitamos entender cómo trabajamos con estas listas, o cómo automatizamos el código de Alura Midi utilizando listas en JavaScript. Pero antes de eso, también debemos hacer que nuestro código sea mucho más legible y comprensible. Para ello, vamos a Visual Studio Code.
+
+Dentro del archivo main.js, ya en la línea 5, está el código que trae todos los elementos que están en la clase .tecla. Pero si vemos este código por primera vez, es difícil saber o entender que allí dentro vamos a tener una lista de teclas.
+
+¿Qué hacemos en este caso? Lo ideal sería poner un nombre que identifique lo que va a hacer esta línea de código.
+
+Entonces, en la línea 5, antes del document, vamos a dar un espacio. Podríamos poner el nombre, por ejemplo, listaDeTeclas, porque va a almacenar una lista de teclas. Y para eso, en JavaScript o en lenguajes de programación, tenemos un recurso que podríamos utilizar que se llama las referencias.
+
+Para declarar estas referencias necesitamos darle un nombre que haga sentido con lo que va a estar almacenado en este código, en nuestro caso, lista de teclas.
+
+¿Y cómo declaramos estas referencias, o cómo creamos las referencias? Sería utilizando las palabras reservadas, const o var, y ¿eso va a depender de qué?
+
+Por ejemplo, en la línea 5, este código que tenemos, el document.querySelector(), ¿va a cambiar durante la ejecución del script? ¿O va a cambiar durante el desarrollo del código? No, no creo que vaya a cambiar, porque es una lista de elementos que contiene todas nuestras teclas.
+
+En este caso, entonces, podríamos declarar esta referencia con la palabra reservada, const, porque es una constante. En la línea 5, antes del nombre listaDeTeclas, voy a poner la palabra const. Incluso cambia el color, pone color rosa antes del nombre.
+
+const listaDeTeclas = document.querySelectorAll('.tecla')
+
+Entonces, así declaramos la referencia, utilizamos la palabra reservada en este caso, una constante, ponemos const. Después, el nombre de la constante, que es un nombre que hace sentido con lo que este código va a guardar.
+
+Y como este código va a almacenar nuestra lista de teclas, necesitamos utilizar un símbolo que ya conocemos, que es el igual con el que vamos a asignar esta lista de teclas a la constante.
+
+Si, en nuestro caso, este código, que está aquí, que trae todos los elementos, fuera a cambiar durante la ejecución del script, o durante el desarrollo del código, podríamos utilizar una referencia variable. Las variables se declaran con la palabra reservada, var, como estoy escribiendo en la línea 7. Pero este no es nuestro caso.
+
+De esta forma, logramos almacenar nuestra lista, en la línea 5, con un nombre que hace sentido y que es fácil de entender. Y de esta lista, con este nombre, vamos a manipular los botones en la próxima clase.
+
+
+//Ahora que ya conocemos las listas y dejar nuestro código mucho más legible y entendible utilizando referencias constantes, como la que creamos en la línea 5 dentro del archivo main, debemos entender cómo podemos acceder a un elemento dentro de esta lista de teclas. Para ello, vamos al navegador.
+
+Dentro de DevTools, en la pestaña "Console", podemos ver aquí en la parte superior, si llamo a mi constante listaDeTeclas, damos "Enter", aquí tenemos que respetar la escritura, poniendo mayúscula, ya está mostrándome mi lista de teclas. ¡Perfecto!
+
+Si hago clic sobre la NodeList, desplegará todos los elementos que están dentro de esta lista de teclas, pero hay algo curioso. Cada elemento tiene un número. Vemos que en la posición 0, tenemos la tecla Pom, en la posición 1, la tecla Clap, en la posición 2, la tecla Tim, así sucesivamente, hasta llegar al número 8.
+
+Sé que puede resultar confuso, porque aquí abajo nos está indicando que son 9 elementos y tenemos 9 teclas. Pero, ¿qué pasa? Esto es normal, porque dentro de las listas siempre se inicia con el número 0. Es decir, el elemento número 1 va a tener la posición 0 y estos números representan la posición o índice dentro de la lista de elementos.
+
+Por eso es tan interesante. ¿Por qué estoy hablando tanto de estos números? Porque es con ellos que vamos a conseguir acceder a un elemento específico, individual, de esta lista. Vamos a verlo.
+
+Hago clic nuevamente sobre la NodeList y voy a llamar a la listaDeTeclas, abro y cierro corchetes. Dentro de los corchetes coloco la posición 0. Al dar "Enter", tenemos el botón de la tecla Pom, porque nos trae este elemento. Y así sucesivamente, puedo hacerlo con todos los elementos que están dentro de la lista de teclas. Vamos a Visual Studio Code.
+
+Recuerden que, en la línea 17, tenemos este código que utilizábamos, donde pasábamos aquí el atributo onclick y la función playSonidoPom para que reprodujeran el sonido de la tecla. Podemos hacer lo mismo utilizando este elemento de la lista. Veámoslo.
+
+Si llamo listaDeTeclas, abro y cierro mis corchetes, coloco dentro de los corchetes el 0, que sería la posición de la tecla Pom. Al cerrar los corchetes, si yo coloco punto, él va a traerme todos los atributos que puedo utilizar. Entonces puedo llamar al onclick igual y también puedo pasar como valor al onclick lo que sería la función playSonidoPom para que reproduzca el sonido del Pom. Veámoslo.
+
+Escribo playSonidoPom, abro y cierro paréntesis, porque es una función. Al presionar "Enter" va a reproducir el sonido. Y reprodujo el sonido.
+
+Sabemos que este código está funcionando, podemos llevarlo a nuestro archivo main.js. Vamos a Visual Studio Code. Aquí dentro del Visual Studio Code en el archivo main, en la línea 7 voy a escribir el código de la lista.
+
+Puedo hasta autocompletar aquí, listaDeTeclas, abro y cierro mis corchetes. La posición del elemento que quiero sería el 0. Después, .onclick que va a ser igual a playSonidoPom. Nuevamente, aquí no podemos colocar los paréntesis de la función, porque si no esto haría que se ejecute inmediatamente y no queremos, porque nos generaría un error. El código quedaría aquí. Colocamos punto y coma.
+
+listaDeTeclas[0].onclick = playSonidoPom;
+listaDeTeclas[1].onclick = playSonidoPom;
+
+Vamos al navegador a probar si está funcionando. Antes voy a actualizar el navegador, al clicar sobre la tecla Pom va a reproducir el sonido. Ahí está reproduciendo. Si hago clic sobre la tecla Clap no sucede nada. Si hago clic sobre la tecla Tim tampoco, porque no hemos hecho nada con estas teclas.
+
+¿Y qué podríamos hacer? Podría estar repitiendo este código, seleccionando "Ctrl + C" y pegando ese mismo código en la línea siguiente con "Ctrl + V", cambiando dentro de los corchetes el número del índice. Por lo que haría 1 en el caso. ¿Y qué pasaría? Como solamente tengo en la función playSonidoPom, él estaría reproduciendo el Pom en la siguiente tecla. Vamos a verlo.
+
+Actualizamos el navegador. Si hago clic en Clap, está reproduciendo el Pom. ¿Por qué? Porque no hemos creado más funciones. Este código no es factible, no es funcional, porque tendríamos que repetir el código y crear una función para cada sonido. Sería playSonido para cada una de las teclas. Y esto nos generaría una repetición de código, lo que haría que nuestro código sea muy grande.
+
+Entonces, el desafío para nuestra próxima clase es cómo podemos utilizar las listas para automatizar esta funcionalidad, poder darle sonido a todas nuestras teclas o la reproducción de los sonidos a todas las teclas del Alura Midi.
+
+
+// En la clase anterior, obtuvimos todas las teclas de Alura Midi utilizando querySelectorAll. También almacenamos todas estas teclas utilizando una referencia constante que llamamos listaDeTeclas. Accedimos a un elemento dentro de estas listas utilizando el índice.
+
+Ahora debemos entender cómo podemos acceder a todas las teclas de Alura Midi de una manera más automatizada, en lugar de repetir el código, como hicimos en la línea 8. De hecho, voy a eliminar este código que no hemos estado utilizando desde la línea 8 hasta la línea 25 dentro de main.js.
+
+Dentro de los lenguajes de programación, tenemos las estructuras de repetición. Estas estructuras de repetición nos ayudan cuando queremos repetir un código cierta cantidad de veces. Para esto, podemos utilizar el bucle, o ciclo de repetición, while, que significa "mientras".
+
+Y este "mientras" no es más que "mientras una condición sea verdadera, se ejecutará este fragmento de código". Vamos a ver la documentación del bucle while. Entonces nos dice: while crea un bucle que ejecuta una sentencia especificada mientras cierta condición es evaluada como verdadera. Tenemos aquí el while y la condición dentro de paréntesis. Esta es la estructura.
+
+Volvemos al Visual Studio Code. Tenemos while, abrimos y cerramos paréntesis y dentro de estos paréntesis vamos a pasar esta condición. Después de los paréntesis, vamos a abrir y cerrar las llaves.
+
+Y dentro de las llaves vamos a indicar cuál es ese fragmento de código que queremos que se repita. En nuestro caso sería el código de la línea 7. Entonces, voy a seleccionar este código y lo voy a arrastrar hasta dentro de las llaves del while. Este es el código que quiero que se repita.
+
+while(){
+    listaDeTeclas[0].onclick = playSonidoPom;
+}
+
+Pero ahora tenemos que entender cómo creamos esta condición aquí dentro del bucle while.
+
+¿Qué tenemos hasta el momento? Vamos a abrir nuestro Alura Midi. Voy a hacer clic aquí en el index.html y lo voy a abrir con el Live Server para ver nuestra aplicación. Cierro aquí el Visual Studio y traigo mi aplicación.
+
+Tenemos 9 teclas dentro del Alura Midi. Entonces, sabemos que dentro de esta condición puedo colocar este número 9, porque es la cantidad de elementos que tengo dentro del Alura Midi.
+
+Si recordamos también, siempre en programación comenzamos en cero. Lo vimos dentro del Array. Siempre se inician los conteos en cero. ¿Qué podría hacer aquí? Comparando el cero con el 9. ¿Y cómo hago esta comparación? Puedo decir: cero es menor que 9, utilizando el operador de menor para hacer esta condición. Esto será verdadero, entonces comenzará a construirse esta condición.
+
+Pero tampoco podemos dejar esta condición "cero es menor que 9", porque quedará estática. También necesito crear una variable o un contador. Y puedo hacer este contador utilizando una variable.
+
+Para declarar una variable, puedo hacerlo utilizando la palabra var, como vimos en la clase anterior, que podemos declarar una referencia constante o variable. Puedo hacerlo con var o con let. Dejaré contenido dentro de la clase para que ustedes sepan diferenciar cuándo usar var o let. Todo depende del alcance.
+
+Entonces, pongo aquí la palabra let para declarar esta variable, que se llamará contador. Y la iniciaremos en cero. Siempre en programación, todo lo comenzamos en cero, es un estándar. let contador = 0. Perfecto, entonces yo, en lugar de poner este cero aquí para hacer la comparación, puedo decir que será mi contador.
+
+let contador = 0
+
+while(contador < 9){
+    listaDeTeclas[0].onclick = playSonidoPom;
+}
+
+Puedo llamar dentro de mi condición este contador. Y volvemos a hacer la pregunta aquí entonces. Contador vale cero. Cero es menor que 9. Es menor que 9, será verdadero. Pero no puedo dejar esto igualmente estático.
+
+¿Cómo puedo incrementar este contador en cada ciclo, en cada vuelta que va a dar el while? Puedo volver a llamar a contador dentro de las llaves del while y establecer, por así decirlo, ese incremento del contador.
+
+let contador = 0
+
+while(contador < 9){
+    listaDeTeclas[0].onclick = playSonidoPom;
+    contador = 1 
+}
+
+
+Puedo decir contador y cambiarle el valor del contador. Será igual a 1. Pero si digo que el contador será igual a 1, el primero valdrá cero, luego valdrá 1, ¿verdad? Y seguirá valiendo 1. Aquí puedo generar un bucle infinito, lo que podría hacer que mi navegador se paralice, incluso podría paralizar la computadora.
+
+Entonces, no ejecutemos este bucle, este fragmento de código, hasta que lo cambiemos el valor del contador. Necesitamos incrementar este contador en cada vuelta que haga mi bucle.
+
+¿Y cómo incrementamos este contador? Podemos hacerlo llamando al mismo contador. Entonces, el contador será igual al contador más 1. ¿Qué estamos diciendo aquí? El contador primero vale cero. Entonces cero es menor que 9, es verdadero. Luego el contador será igual a cero más 1. Y así se irá incrementando en cada vuelta.
+
+let contador = 0
+
+while(contador < 9){
+    listaDeTeclas[0].onclick = playSonidoPom;
+    contador = contador + 1 
+}
+
+
+Probemos si se está incrementando. ¿Cómo podemos hacer esta comprobación? Utilizando una funcionalidad que tenemos aquí en JavaScript, que es el console.log. Este console.log nos ayuda a enviar un mensaje a la consola del navegador para probar fragmentos de código, para ver qué está sucediendo con nuestro código, para hacer validaciones en ese sentido.
+
+Entonces abro paréntesis, console.log(). Y aquí puedo pasar mi variable contador para saber si se está incrementando. Con eso puedo probar y ver qué está sucediendo.
+
+Pero también aquí puedo agregar un texto para tener certeza o seguridad de que está haciendo las vueltas. Abro mis comillas simples, que indicarán que esto es un fragmento de código, una string. Y voy a decir 'Vuelta' para indicar que son las vueltas o los ciclos que está dando el bucle while.
+
+Y después de cerrar esas comillas, daré un espacio y voy a colocar el símbolo de más, porque con eso voy a concatenar, voy a unir este fragmento de texto con mi variable contador. Y así puedo tener ese mensaje en la consola del navegador.
+
+let contador = 0
+
+while(contador < 9){
+    listaDeTeclas[0].onclick = playSonidoPom;
+    contador = contador + 1 
+    console.log('Vuelta' + contador)
+}
+ 
+Vamos a verlo en el navegador para ver cómo está. Voy a actualizar el Alura Midi. Si bien nos está quedando colgado porque estaba el bucle while y no había establecido la condición de parada dentro del bucle.
+
+Vamos a cerrar el navegador y volver a nuestro index.html. Hago clic derecho y voy con el Open with Live Server, que es para ir mostrando lo que sería nuestra aplicación en tiempo real.
+
+Hago clic derecho en el navegador, Inspeccionar. Vamos a la pestaña de Console. Y tenemos aquí nuestras vueltas del ciclo while. Vuelta 1, vuelta 2, vuelta 3, vuelta 4. Estos números son el contador incrementándose.
+
+Entonces, sabemos que nuestro código está funcionando y está incrementando el contador.
+
+Si probamos ahora nuestras teclas dentro del Alura Midi, vamos a hacer clic sobre el Pom. Está funcionando la tecla Pom. Si hacemos clic sobre el Clap, no está haciendo nada. ¿Por qué? Tenemos un detalle dentro del código.
+
+Volvamos al Visual Studio Code en el archivo main.js. En la línea 10, estoy llamando a la listaDeTeclas, y siempre estamos pasando el índice cero. Siempre estará solo este código, se estará repitiendo solo con el índice cero, que es nuestra tecla Pom. Y también tenemos la misma función.
+
+Entonces, ¿qué puedo hacer? Quitando el cero y en lugar de ello, puedo poner un contador que trabajará con un número que variará en cada ciclo. Puedo llamar aquí al contador dentro de lo que sería el índice.
+
+let contador = 0
+
+while(contador < 9){
+    listaDeTeclas[contador].onclick = playSonidoPom;
+    contador = contador + 1 
+    console.log('Vuelta' + contador)
+}
+ 
+
+Si probamos nuevamente en el navegador, vamos a ver qué está haciendo la aplicación. Si hago clic en Pom, está reproduciendo. Si hago clic en Clap, reproduce el Pom. Si hago clic en Tim, reproduce el Pom.
+
+¿Y por qué sucede esto? Porque tenemos solo una función declarada en la línea 1 y es playSonidoPom(). ¿Y qué está trayendo? Solo el sonido de la tecla Pom. Y eso lo está repitiendo ahora en todas las teclas, porque pusimos el contador aquí, está reproduciendo esa función playSonidoPom() en todas nuestras teclas.
+
+Necesitamos crear una función que sea mucho más genérica. Y para eso, nos vemos en el siguiente video.
+
+
+//En el video anterior, vimos cómo acceder a los elementos de la lista de una manera mucho más optimizada utilizando la estructura de repetición while.
+
+Pero ahora todas las teclas de Alura Midi están reproduciendo el mismo sonido, porque se asignó la función playSonidoPom() y esta función reproduce el sonido de la tecla Pom. Por eso, en este video necesitamos crear una función mucho más genérica que pueda reproducir el sonido de cualquier tecla.
+
+Para eso, en el archivo main.js, en la línea número 1, donde tenemos el nombre de la función, vamos a modificar este nombre. En lugar de playSonidoPom, podríamos dejar solo playSonido, así se convierte en un nombre mucho más genérico y que tiene sentido con lo que queremos lograr.
+
+function playSonido () {}
+
+En la línea número 2, donde tenemos el document.querySelector, dentro de los paréntesis del querySelector(), que está el ID de sonido, #sonido_tecla_pom, debemos quitar este ID de aquí, ¿por qué? Porque ese ID no puede ser fijo, debe cambiar.
+
+
+Este ID debe ser informado cuando la función es llamada, para que la función pueda reproducir el sonido de audio específico, es decir, si presionamos la tecla Clap, debe reproducir el sonido asociado a esa tecla.
+
+Para eso, vamos a necesitar utilizar parámetros, ¿y qué son los parámetros? Son valores que podemos pasarle a la función y que serán utilizados en la ejecución de dicha función.
+
+Entonces, para crear un parámetro en la línea número 1, donde tenemos la función playSonido(), vamos a colocarlo dentro de los paréntesis de la función. ¿Qué necesito? Ese ID que mencioné, el ID del elemento de audio, entonces puedo llamar a mi parámetro IdElementoAudio.
+
+function playSonido (IdElementoAudio)
+
+Entonces vamos a necesitar este parámetro para que quien utilice la función playSonido() informe este ID del elemento de audio para que pueda reproducir ese audio en específico.
+
+Este parámetro podemos utilizarlo también dentro del los paréntesis del querySelector. Así tenemos lo que sería ese sonido que estamos pasando, ese parámetro dentro de nuestro querySelector.
+
+Si se fijan, cuando llamo este parámetro dentro del querySelector lo hago sin las comillas y sin utilizar el numeral que hace referencia que es un ID. Porque en este caso no estamos utilizando lo que sería un ID específicamente, sino que estamos pasando un parámetro y es un valor, entonces no puede ir entre comillas ni con el símbolo de numeral.
+
+Perfecto. Entonces tenemos aquí actualizado lo que sería la línea 1 y 2. Cómo cambiamos el nombre de nuestra función, también debemos actualizar esto dentro del while.
+
+function playSonidoPom (IdElementoAudio) {
+    document.querySelector(IdElementoAudio).play();
+}
+
+
+Si se fijan en la línea 10, playSonido ya quedó en blanco, cambió el color. Vamos a colocar la función playSonido en nuestro caso, que fue la modificación que hicimos.
+
+while(contador < 9){
+    listaDeTeclas[contador].onclick = playSonido;
+    contador = contador + 1 
+    console.log('Vuelta' + contador)
+}
+
+
+Perfecto, ya hemos realizado nuestras modificaciones. Ahora vamos a probar si todo está funcionando correctamente. Para eso, vamos al navegador. En mi caso, estoy utilizando Chrome.
+
+Actualizamos la página y procedemos a limpiar la consola dentro del Inspeccionar. Una vez limpiada la consola, puedo llamar a la función playSonido() y pasar dentro de los paréntesis ese IdElementoAudio. Veamos qué sucede.
+
+Si presionamos "Enter", se generará un error, porque este IdElementoAudio aún no ha sido definido. No existe y, por lo tanto, no puede reproducir algo que no existe.
+
+Para probar nuestra función, podemos utilizar algún otro ID de los que tenemos dentro de las etiquetas de audio.
+
+Vamos a Visual Studio Code, dentro del archivo index.html, vamos a ver los ID que tenemos. A partir de la línea 37, tenemos los ID de audio. Vamos a utilizar el ID de la línea 42, de la tecla "Toim". Lo selecciono y presiono "Ctrl + C".
+
+Volvemos a la consola del navegador y llamo a la función playSonido. Abro y cierro mis paréntesis y, como estoy utilizando un ID, necesito abrir mis comillas y colocar el numeral para hacer referencia a que eso es un ID, un texto. Voy a presionar "Ctrl + V" para pegar el ID sonido_tecla_toim que seleccioné desde Visual Studio.
+
+Si presiono "Enter" en esta línea, se reproducirá el sonido de la tecla Toim. Con esto, logramos probar nuestra función y ver que si pasamos el ID de un sonido en específico, la función reproduce ese sonido.
+
+Entonces, para el próximo vídeo, vamos a necesitar agregar esta función dentro del while y resolver los problemas que puedan surgir. Nos vemos en el siguiente vídeo.
+
+
+//En el video anterior vimos cómo podíamos crear o hacer una función mucho más genérica que reproduciría cualquier sonido utilizando el selector. Pero, si ahora hacemos clic en alguna de las teclas de Alura Midi, aparecerá un error en la consola. Vamos a entender lo que está sucediendo. Para eso, vamos a Visual Studio.
+
+Si observamos en la línea 10 dentro de la estructura while, estamos llamando a la función playSonido, pero no estamos proporcionando el parámetro idElementoAudio.
+
+Necesitamos pasar este parámetro a la función a través del atributo onclick. Pero no podemos hacerlo abriendo y cerrando paréntesis después del nombre de la función, porque así esta función se invocaría inmediatamente y nos generaría un error.
+
+Si pongo los paréntesis y vamos al navegador, vemos que tenemos un error diferente. Nos dice que no está logrando reproducir el sonido. Volvamos al código.
+
+En lugar de esta función playSonido, podríamos estar utilizando una funcionalidad de Javascript, que son las funciones anónimas o funciones sin nombre. Y estas funciones anónimas las podemos usar para asignar un valor a un atributo o también podemos almacenarlas dentro de alguna variable o constante.
+
+Podríamos estar utilizándola aquí, pasándola a onclick. En vez de poner playSonido, estaríamos llamando una función anónima, y lo hacemos con la palabra reservada function.
+
+while(contador < 9){
+    listaDeTeclas[contador].onclick = function (){
+        playSonido('#sonido_tecla_tom');
+    };
+    contador = contador + 1 
+    console.log('Vuelta' + contador)
+}
+
+
+Como estas son funciones anónimas, no necesito darle un nombre a esta función. Solamente después de la palabra reservada function, abro y cierro mis paréntesis, y luego abro y cierro llaves, porque mantienen la estructura de la función, solo que sin el nombre.
+
+Ahora, dentro de las llaves, podemos llamar a nuestra función playSonido y pasarle el parámetro deseado dentro de los paréntesis. ¿Por qué? Porque estamos creando una función nueva, y como la estamos creando, no estamos invocándola inmediatamente, solo estamos indicando que esta función existe en este contexto. Y para que sea utilizada o llamada, necesitamos hacer clic en algún botón.
+
+Vamos a probarla, entonces. Vamos a utilizar algún elemento de audio como parámetro dentro de la función. Vamos al index.html, voy a seleccionar el ID del audio de la línea 45, que es el "sonido_tecla_tom", no es tan ruidoso, y presiono "Ctrl + C".
+
+Dentro de los paréntesis de la función, abro y cierro mis comillas simples, coloco un numeral, un ID, y voy a pegar el nombre del ID, sonido_tecla_tom. Punto y coma. Lo colocamos aquí, aquí también podemos colocar un punto y coma, después el contador.
+
+Siempre es bueno en JavaScript colocar los punto y coma, aunque no sea algo obligatorio, pero es mejor para evitar cualquier tipo de error.
+
+Vamos a probar si esto está funcionando en el navegador. Si vamos al navegador, aún está mostrando lo que sería el contador que tenemos en el código. Voy a limpiar la consola y hacer clic en alguna de las teclas.
+
+Vamos a hacer clic en Splash. Está reproduciendo el sonido de la tecla Tom, y si hacemos clic en Pom, también está reproduciendo el sonido de la tecla Tom.
+
+¿Por qué? Porque aunque nuestra función ya esté preparada para recibir un ID de forma dinámica, aún estamos pasando este ID de una forma fija. Entonces necesitamos crear este ID de una forma dinámica, y para eso te veo en el próximo video.
+
+//Hasta ahora hemos visto cómo podemos pasar parámetros a una función. Pero estamos pasando estos parámetros de una manera fija a lo que sería nuestra función playSonido dentro del onclick.
+
+Sabemos que no podemos hacerlo de una manera fija. Tenemos que hacerlo de una manera dinámica. En este video intentaremos entender cómo podemos hacerlo. Para eso, vamos al index.html para intentar entender un poco el código que tenemos.
+
+Si observamos dentro de las etiquetas de audio, en el ID, siempre tenemos "sonido", guión bajo, "tecla", guión bajo y, al final, el nombre de lo que sería el instrumento o de ese sonido. Y se repite: sonido_tecla_pom, sonido_tecla_tim, sonido_tecla_puff y así sucesivamente.
+
+Si observamos dentro de los button, que serían nuestras teclas, también tenemos algo parecido en las clases. Se repite: siempre tenemos al inicio, en la primera clase, la clase tecla, y luego tenemos tecla, guión bajo, nombre de la tecla.
+
+Dentro de nuestro while, de nuestro bucle de repetición, no podemos acceder a los elementos de audio, pero podemos acceder a los button. Y con estos elementos button, podemos acceder a ellos por sus clases, podemos saber cuál es el elemento que está siendo clicado en ese momento.
+
+¿Cómo es esto? Vamos a verlo mejor en la consola de DevTool.
+
+En el navegador, si llamamos a la listaDeTeclas, abrimos y cerramos corchetes, coloco el índice 0, nos va a traer el elemento button de la tecla Pom, o el botón de la tecla Pom. Ahí tenemos ese botón.
+
+Si volvemos a llamar a listaDeTeclas, abrimos y cerramos corchetes, índice 0, y después de los corchetes, colocamos el punto para acceder a los atributos que este elemento tiene disponible.
+
+Podemos acceder al atributo classList, que nos va a traer una lista de clases. Si llamamos a este, tenemos una lista de clases que tiene ese elemento, en el índice 0, que sería el de la tecla Pom. Nos está referenciando aquí: tecla, tecla_pom. Y nos traen los índices: en el índice 0 tenemos la clase tecla, y en el índice 1 tenemos la clase tecla_pom.
+
+Si queremos acceder a esa segunda clase del elemento, tenemos que ingresar el índice 1, sería así: listaDeTeclas, índice 0, porque sería el de la tecla Pom, punto classList, abrimos y cerramos corchetes, y dentro de los corchetes colocamos el índice 1, para acceder a esa tecla_pom, a esa segunda clase.
+
+Vamos a la pestaña de Elements, esa clase de la tecla Pom, dentro de nuestras teclas, sería esta final que tenemos aquí, al final de los button, sería la segunda clase. Entonces accedemos ahí, si coloco índice 1, damos Enter, nos trae esta segunda clase, tecla Pom, y con eso conseguimos saber cuál es el botón que está siendo clicado en ese momento.
+
+Ya que sabemos que este código nos trae esa información, podemos colocarlo dentro de nuestro Visual Studio, en nuestro archivo main.
+
+Para eso, dentro del while, en la primera línea, vamos a dar Enter aquí, voy a colocar ese código, listaDeTeclas, abrimos y cerramos corchetes, y aquí voy a llamar a contador, porque es el que va a tener el índice que está en ese momento. contador, punto classList, abrimos y cerramos corchetes. Y queremos el índice 1, ya habíamos visto en la consola, luego punto y coma. Perfecto, este código nos está trayendo esa información.
+
+Para que nuestro código sea más legible e incluso para probarlo, podemos guardar la línea que acabamos de crear en una constante. Entonces, voy a crear una constante que llamaré instrumento. Esta línea de código me está proporcionando la información del instrumento, es decir, tecla_pom, cuál es el instrumento que se está aplicando. const instrumento será igual a este código que estamos introduciendo aquí.
+
+Vamos a probar lo que está dentro de este código con un console.log llamado instrumento. Entonces, puedo decir console.log(instrumento) para ver qué está haciendo este código.
+
+while(contador < 9){
+   const instrumento = listaDeTeclas[contador].classList[1];
+   console.log(instrumento)
+   
+    listaDeTeclas[contador].onclick = function (){
+        playSonido('#sonido_tecla_tom');
+    };
+    contador = contador + 1 
+    console.log('Vuelta' + contador)
+}
+
+
+Vamos a nuestro navegador y actualizamos. En este caso, tenemos tecla_pom en la primera vuelta, porque aún tenemos dentro del while el console.log que está mostrando el contador y ahora tenemos el console.log del instrumento.
+
+Entonces, tenemos tecla_pom en la primera vuelta, tecla_clap en la segunda vuelta, tecla_tim en la tercera vuelta, y así sucesivamente nos está mostrando todas las 9 teclas. Nos está proporcionando la clase de ese botón que sería accionado. Perfecto.
+
+Volvamos al código. Si prestamos atención dentro del while, tenemos algunas partes de código que están repetidas. Vemos que en la línea 10, en la constante instrumento, tenemos listaDeTeclas[contador], nuevamente en la línea 13 tenemos listaDeTeclas[contador].
+
+Podemos organizar esto de una mejor manera creando una nueva constante que almacene esa parte de información.
+
+Si estamos accediendo a un elemento de una listaDeTeclas, tenemos una tecla. Entonces, podríamos crear una constante con el nombre de tecla que será igual a listaDeTeclas[contador].
+
+while(contador < 9){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    console.log(instrumento)
+    
+     tecla.onclick = function (){
+         playSonido('#sonido_tecla_tom');
+     };
+     contador = contador + 1 
+     console.log('Vuelta' + contador)
+ }
+ 
+
+De esta manera, tenemos ese código guardado dentro de una constante que ahora podemos utilizar en lugar de esta repetición de código que tenemos dentro de nuestro código del while.
+
+Vamos a realizar esta sustitución aquí. En lugar de listaDeTeclas[contador] puedo llamar a la constante tecla y es mucho más fácil de entender. También sabemos que se está almacenando una tecla y así nuestro código se vuelve mucho más legible.
+
+Nuevamente en la línea 14 vamos a modificar, vamos a eliminar este código y llamar aquí a tecla. Perfecto, tenemos un código mucho más legible y comprensible.
+
+Ahora que ya tenemos la tecla y el instrumento, solo nos falta tener el ID correcto, o traer ese ID de una manera dinámica. Porque aún dentro de la función playSonido estamos pasando este ID sonido_tecla_tom de una manera fija. Necesitamos hacerlo de una manera dinámica.
+
+Para eso, puedo crear una nueva constante. Voy a crear una const que se llamará idAudio. ¿Qué va a recibir esta constante idAudio? Va a recibir un string (cadena de caracteres) que tendrá un fragmento dinámico dentro de ella. Para eso, vamos a utilizar las comillas invertidas, que es una forma de crear un string en JavaScript.
+
+Dentro de estas comillas invertidas, vamos a pasar lo que sería el ID del sonido. ¿Por qué? Porque queremos crear el ID del elemento de audio (idElementoAudio) de una manera dinámica.
+
+Si vemos, vamos al index.html, tenemos sonido dentro de los elementos de audio y luego tenemos tecla_pom. Vamos a crear aproximadamente este fragmento de texto de manera dinámica.
+
+Entonces aquí colocamos numeral, sonido y todo lo que va a ser variable dentro de estas comillas invertidas debe ir dentro de llaves. Entonces abrimos y cerramos llaves y antes de las llaves necesitamos utilizar el símbolo de dólar.
+
+Esto es un recurso de JavaScript que se llama template string y es lo que hace una apertura para el código JavaScript dentro de una cadena de texto. Con esto, en esta cadena de texto que estamos queriendo construir aquí dentro de las clases, podemos pasar código JavaScript.
+
+Y aquí, ¿qué podemos pasar? Si el instrumento nos trae la segunda clase de nuestro botón, podemos llamar instrumento aquí dentro.
+
+Tenemos comillas invertidas, sonido, abrimos nuestras llaves, colocamos el símbolo de dólar para utilizar el template string y llamamos a instrumento aquí. Cerramos con punto y coma.
+
+Podemos probar qué está trayendo este idAudio con un console.log. Abrimos y cerramos paréntesis y llamamos a idAudio.
+
+
+while(contador < 9){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    console.log(instrumento)
+    
+    const idAudio = `#sonido${instrumento}`;
+    console.log(idAudio)
+
+     tecla.onclick = function (){
+         playSonido('#sonido_tecla_tom');
+     };
+     contador = contador + 1 
+     console.log('Vuelta' + contador)
+ }
+ 
+
+Vamos a nuestra consola para ver qué está sucediendo. Actualizamos, ¿qué tenemos? Ahora, ¿qué se está construyendo en este código? Tenemos el de la tecla_pom que es la clase, y ahora como idAudio tenemos sonidotecla_pom, que es lo que estamos construyendo dentro de nuestro ID. Y tenemos el contador.
+
+Está quedando un poco grande lo que sería la consola. Podemos hasta quitar este console.log de contador que tenemos aquí para no confundirnos y ver qué está trayendo el idAudio. También podemos quitar el del instrumento. Podemos dejarlo así y vamos nuevamente al navegador.
+
+Y ahora, ¿qué se está construyendo? Se está mostrando sobre el console.log de esa constante idAudio que construimos utilizando el template string. ¿Qué nos está haciendo? Nos está trayendo sonidotecla_pom y aquí nos está faltando algo.
+
+Nos está faltando un guión bajo entre sonido y tecla, ¿por qué? Nuestra clase es sonido, guión bajo, tecla_pom. Nos está faltando eso y ¿cómo lo hacemos?
+
+Lo agregamos dentro de nuestra comilla invertida, donde sería hashtag, sonido, guión bajo y allí vendría el símbolo de dólar, abrimos llaves, instrumento. Con eso nos estamos creando esto de una forma dinámica.
+
+while(contador < 9){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+   
+    const idAudio = `#sonido_${instrumento}`;
+    console.log(idAudio)
+
+     tecla.onclick = function (){
+         playSonido('#sonido_tecla_tom');
+     };
+     contador = contador + 1 
+     
+ }
+ 
+ 
+
+Si volvemos al navegador en la consola ahora sí tenemos sonido_tecla_pom, sonido_tecla_clap, sonido_tecla_tim, de todas nuestras teclas.
+
+Perfecto, ya que tenemos esto, podemos estar utilizando ese ID dentro de la función en vez de pasar aquí sonido_tecla_pom de una forma fija, podemos llamar entonces a idAudio. Y así vamos a conseguir que nuestras teclas de la Alura Midi estén funcionando con los sonidos correctos.
+
+while(contador < 9){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+   
+    const idAudio = `#sonido_${instrumento}`;
+    console.log(idAudio)
+
+     tecla.onclick = function (){
+         playSonido(idAudio);
+     };
+     contador = contador + 1 
+     
+ }
+
+Vamos a probarlo. Vamos a actualizar aquí, si clicamos en la tecla Pom está funcionando, en la tecla Clap tenemos el sonido de la tecla Clap. Si clicamos en el Tic, Splash... Están funcionando todas nuestras teclas de la Alura Midi, reproduciendo los sonidos correspondientes.
+
+Entonces, ya que tenemos nuestra Alura Midi con sus funcionalidades principales funcionando, a pesar de la redundancia, vamos a ver en los siguientes videos cómo podemos seguir mejorando el código de la Alura Midi e implementando algunas otras funciones que podemos estar agregando a este proyecto.
+
+
+//En el video anterior, agregamos funcionalidad a las teclas de Alura Midi. Ahora podemos reproducir todos los sonidos si apretamos o damos clic en alguna de las teclas. Vamos a probarlo. Tenemos el Pom, el Puff, el Psh. Todas nuestras teclas están funcionando. Ahora podemos enfocarnos en mejorar nuestro código.
+
+En aulas anteriores, estuvimos trabajando con la estructura de repetición while y esta evalúa si una condición es verdadera o falsa para determinar si se repite dicha instrucción. Pero imagínense que queremos agregar otros instrumentos para nuestras personas usuarias o agregar otras teclas a Alura Midi.
+
+Vamos al código para verlo mejor. En Visual Studio Code, si queremos agregar otros instrumentos como un piano, un bongó o muchas más teclas, tendríamos que repetir código. Tendríamos que repetir el while, si tuviéramos otra lista de teclas, otra lista de sonidos, también tendríamos que repetir este código, tendríamos que crear otros contadores y así sucesivamente. Tendríamos repetición de código. Y eso no es una buena práctica.
+
+Dentro de los lenguajes de programación, existen otras estructuras de repetición que pueden ayudarnos con esto. Como es el bucle for. La palabra "for" significa "para" en su traducción del inglés. Este bucle se usa para repetir una o más instrucciones un número determinado de veces.
+
+Es muy utilizado para realizar lo que serían repeticiones o recorrer listas, como es nuestro caso, la lista de teclas. También, este bucle for se repite hasta que una condición específica se evalúa como falsa. Y las condiciones para este bucle, se las pasamos dentro de los paréntesis. Dentro de ellos, indicamos hasta cuándo queremos que se repita este bucle.
+
+Vamos a ver cómo es la sintaxis. La sintaxis del for es así, llamamos a la palabra for. Y dentro de los paréntesis, es donde vamos a pasar estas condiciones. Y estas condiciones, las podemos pasar con tres instrucciones, si ven están separadas por coma.
+
+La primera instrucción es donde se va a inicializar el bucle. La segunda es hasta cuándo va a realizar esta cantidad de ciclos, hasta cuándo va a repetir. Y la última condición, que es la expresión final, que sería el incremento. Y dentro de las llaves, vamos a informar qué es lo que queremos que este bucle haga en cada uno de sus ciclos.
+
+Pero vamos a verlo mejor en el código. Entonces, dentro de nuestro archivo main, vamos a crear este for. Voy a dar espacio en lo que sería aquí la línea 8. En la línea 9, vamos a escribir este for. Llamamos a la palabra for, abrimos y cerramos paréntesis, como vimos que es su sintaxis, y luego abrimos y cerramos llaves.
+
+Lo primero que vimos que va dentro de los paréntesis, es la inicialización de este for. ¿Dónde queremos que se inicie? Queremos que se inicie en el elemento 0, en el primer elemento de nuestra listaDeTeclas. Entonces aquí adentro nosotros podríamos llamar a nuestra variable let contador = 0.
+
+Esto es lo interesante del for, que no necesitamos crear esta variable de contador afuera de la estructura del bucle de repetición. Porque él ya nos permite realizar eso dentro de lo que sería la estructura del for. Entonces aquí voy a cortar lo que sería esta línea 7, voy a dar "Ctrl + X" y "Ctrl + V" dentro de los paréntesis del bucle for. Así, tenemos let contador = 0, luego punto y coma.
+
+La siguiente instrucción del bucle es la condición de hasta cuándo se va a repetir este bucle, hasta dónde él va a llegar. Y nosotros tenemos nueve teclas dentro del Alura Midi. Entonces podríamos utilizar nuestro contador nuevamente acá, como tenemos dentro del while, contador < 9.
+
+De esta manera, podemos reutilizar parte del código que tenemos dentro del while en este bucle for. Entonces, la misma condición que teníamos dentro de los paréntesis del while, podemos utilizarla dentro de la estructura del bucle for. Así, estará realizando esa repetición por los nueve elementos de nuestra lista de teclas.
+
+A medida que recorre cada una de las nueve teclas, también necesitamos indicarle qué estará haciendo en cada paso. Esta sería la última instrucción que debemos pasarle a nuestro bucle for. ¿Por qué? Porque si no le pasamos esta instrucción, no incrementará, se quedará en un elemento fijo dentro de nuestro bucle.
+
+Entonces, podemos utilizar esta misma línea de código que tenemos en la línea 26 del contador, donde vamos incrementando el contador. Este código que tenemos acá, lo voy a cortar con "Ctrl + X" y lo voy a pegar dentro de las condiciones del bucle for. Voy a quitarle el punto y coma para que no me dé ningún error.
+
+Entonces tenemos aquí la inicialización, la condición y el incremento del bucle. De manera que cuando pasa por el primer elemento o la primera tecla, incrementa en uno más, pasa por la segunda tecla, incrementa uno más, pasa por la tercera tecla. Eso es lo que hace el contador.
+
+Y esta expresión del contador podemos reducirla también. En vez de contador va a ser igual a contador más uno, podemos decir contador ++. Esto va a ser lo mismo que ese código que teníamos allá, solo que de una forma mucho más resumida. Aquí continuará a realizar el incremento.
+
+Y ahora, este código que tenemos desde la línea 17 a 28, que ya construimos en la clase pasada, también podemos utilizarlo dentro de las llaves de nuestro for. Aquí indicamos lo que nuestro ciclo va a hacer en cada una de estas repeticiones o iteraciones que va a realizar. Entonces podemos hasta arrastrar ese código aquí adentro del for. Y voy a arreglarlo para que quede indentado, porque si no va a quedar extraño nuestro código. Es mejor tener nuestro código bien organizado.
+
+Ahora ya no necesitamos este bucle while. Podemos hasta eliminarlo. Ya tenemos nuestro ciclo realizado utilizando una estructura de repetición que nos ayuda mucho más. En este sentido, si queremos agregar más teclas a nuestro Alura Midi, entonces queda mucho más optimizado.
+
+
+for (let contador = 0; contador < 9; contador++){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+   
+    const idAudio = `#sonido_${instrumento}`;
+    console.log(idAudio)
+
+     tecla.onclick = function (){
+         playSonido(idAudio);
+     };
+
+}
+
+
+
+Podemos continuar optimizando nuestro código. ¿Cómo? Dentro de los paréntesis en donde pasamos la condición a nuestro bucle de repetición, estamos trabajando con el número 9. Entonces es un número fijo. Si queremos agregarle más teclas al Alura Midi o más teclas a nuestra lista de teclas, la lógica del código va a dejar de funcionar. Porque estamos diciendo que nuestro bucle se repita hasta el número 9. Si agregamos un 12, tendríamos que venir acá al código, modificar, agregar el número 12. Entonces podemos trabajar esto de una forma mucho más optimizada.
+
+¿Cómo? Vamos a la consola. Entonces estoy nuevamente en la aplicación. Hacemos clic derecho, "Inspeccionar" para abrir la consola. La parte superior dice "Console". Vemos que nuestro código está funcionando, pues realiza las repeticiones acá y nos trae los ID que habíamos realizado en la otra aula. Vamos a limpiar la consola.
+
+Si yo llamo aquí listaDeTeclas y doy "Enter", nos trae nuestra lista de teclas. Si abrimos aquí el listado, tenemos todos nuestros elementos. Y al final tenemos la palabra length que nos dice que es 9, o sea, 9 teclas. Entonces esta palabra length significa "tamaño" y nos indica el tamaño de nuestra lista de teclas.
+
+Esta misma palabra podemos utilizarla dentro del bucle para informar que haga los ciclos por toda nuestra lista de teclas. Y así no colocamos un número. Vamos a verlo en el código.
+
+Entonces, en vez de 9, puedo decir listaDeTeclas, luego punto. Y aquí adentro llamo a lo que sería length, que teníamos en la consola. Aquí está dando error porque estoy modificando el código. Entonces sería .length. Y aquí me trae lo que sería la propiedad. Es L-E-N-G-T-H. Significa tamaño.
+
+for (let contador = 0; contador < listaDeTeclas.length; contador++){
+    const tecla = listaDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    console.log(contador)
+    const idAudio = `#sonido_${instrumento}`;
+    console.log(idAudio)
+
+     tecla.onclick = function (){
+         playSonido(idAudio);
+     };
+
+}
+
+Así, él va a recorrer y analizar las condiciones por todo el largo de nuestra lista. Vamos a ver si el código está funcionando. Nuevamente, en la consola, nos trae el console.log que teníamos acá de los idAudio. Podemos hasta colocar un console.log de contador. Nuevamente, console.log, abrimos paréntesis y llamamos a contador.
+
+Vamos a Alura Midi. Ya nos trae lo que sería el contador. Entonces tenemos 0, 1, 2, 3. Y, entre cada uno de ellos, el ID que estamos creando.
+
+Continuaremos a mejorar nuestro código y también vamos a trabajar con lo que sería la mejoría de la accesibilidad. Para eso, te veo en el siguiente video.
+
+
+//Estamos desarrollando juntos el proyecto Alura Midi, como vinimos en el aula la navegación a través del teclado está con problemas, agregamos la “clase activa” a las teclas, por eso cuando son presionadas, se activan visualmente con un fondo rojo para indicar que está en uso. Sin embargo, la tecla mantiene este fondo rojo incluso después de dejar de presionarla, lo que puede confundir a los usuarios.
+
+tecla.onclick = function (){
+    playSonido(idAudio);
+};
+
+tecla.onclick = function (){
+   playSonido(idAudio);
+};
+tecla.onkeydown = function(){
+       tecla.classList.add('activa');
+}
+
+// En el video anterior, vimos cómo podíamos agregar la clase activa a las teclas de Alura Midi para que se resaltara en rojo cuando presionamos algún botón, como por ejemplo "Enter".
+
+Sin embargo, ahora tenemos un problema: cuando presionamos cualquier tecla, la tecla de "Tabulador" deja el destaque del botón rojo activado y no está removiendo esta clase activa dentro de la lógica de Alura Midi.
+
+Además, la lógica está funcionando, pero si me posiciono en la tecla Tim y presiono la tecla "D" en el teclado de la computadora, se destaca el botón. ¿Por qué? Vamos a entender esto en el código.
+
+En el archivo main.js, si vemos la línea 19, tenemos el evento del teclado, que es cuando la tecla es presionada y estamos indicándole que agregue esa clase activa, que es el destaque rojo, a la tecla que fue presionada. En la línea 22, tenemos el onkeyup, que es el evento cuando la persona usuaria levanta la tecla, ya no está siendo presionada, que remueve la clase activa.
+
+Dentro de la condición, cuando agregamos la clase activa, solamente le estamos informando que agregue la clase activa y el lenguaje o el código lo está tomando como con cualquier tecla del teclado.
+
+Pero no queremos esto, queremos que este destaque rojo en las teclas de Alura Midi se agregue solo cuando presionamos la tecla de "Enter" o la tecla de "Espacio", que son las teclas del teclado de la computadora que reproducen el sonido.
+
+¿Cómo podemos agregar esto en el código? En los lenguajes de programación, tenemos algunas estructuras condicionales que nos pueden ayudar con esto para que se ejecuten solo si se cumple cierta condición.
+
+Para eso, tenemos la condicional if, que significa "si". ¿Cuál es su estructura? Tenemos la palabra reservada if, abrimos y cerramos paréntesis, y abrimos y cerramos llaves. ¿Cómo leemos esto? Si cierta condición que vamos a informar dentro de los paréntesis del if es verdadera, entonces ejecuta el código que esté dentro de las llaves de ese if, de esa condición.
+
+
+tecla.onclick = function (){
+    playSonido(idAudio);
+};
+
+tecla.onkeydown = function(){
+    if ('espacio'){
+        tecla.classList.add('activa');
+    }
+}
+
+tecla.onkeyup = function(){
+       tecla.classList.remove('activa');
+}
+
+
+En nuestro caso, el código que agrega la clase activa a la tecla podemos colocarlo dentro de estas llaves. Voy a darle "Ctrl + X" y lo voy a pegar dentro de las llaves. Entonces, este código solo se va a ejecutar si la condición que coloquemos dentro de los paréntesis es verdadera.
+
+¿Y cómo creamos esta condición dentro de los paréntesis? Tenemos una idea de lo que sería esa condición: cuando las teclas "Enter" o "Espacio" sean presionadas en el teclado de la computadora.
+
+Entre comillas simples, podríamos colocar el texto "espacio" para cuando "Espacio" sea presionado. Pero, ¿cómo sabemos que la persona usuaria presionó esa tecla en el teclado de su computadora? Para eso, tenemos un recurso que es propio del lenguaje y este recurso está disponible para todas las funciones que estén vinculadas a un evento del teclado o a algún evento, como es el caso del evento del teclado onkeydown.
+
+Entonces, tenemos esta función anónima que está vinculada a ese evento. Dentro de esa función, dentro de los paréntesis, tenemos el parámetro que nos informa cuando el evento fue activado. Podemos darle cualquier nombre a este parámetro. Comúnmente se encuentra en los códigos en internet como e, pero en este caso, lo voy a llamar evento para que entiendan que ese es el nombre que le voy a dar.
+
+¿Y cómo sabemos qué información nos está trayendo este evento? Con console.log. Abrimos y cerramos paréntesis y llamo aquí adentro a evento.
+
+tecla.onclick = function (){
+    playSonido(idAudio);
+};
+
+tecla.onkeydown = function(evento){
+    console.log(evento)
+    if ('espacio'){
+        tecla.classList.add('activa');
+    }
+}
+
+tecla.onkeyup = function(){
+       tecla.classList.remove('activa');
+}
+
+
+Ahora, vamos al navegador para ver qué información nos trae este evento o ese parámetro del evento. Voy a limpiar la consola, me voy a posicionar en las teclas de la Alura Midi con "Tabulador", coloco el foco en la tecla Pom, si presiono el "Tabulador", me imprimió en la consola las informaciones del KeyboardEvent. Nos trae el objeto con todas las propiedades que tenemos dentro, todas las informaciones de este objeto.
+
+Hay mucha información acá adentro, pero, ¿qué queremos saber? ¿Qué tecla presionó la persona usuaria o qué tecla presioné ahora en el teclado de la computadora?
+
+Aquí vemos que tenemos esa propiedad code y nos dice que fue presionada la tecla "Tab". Si continuamos bajando en las informaciones, tenemos también key que nos dice que fue presionada la tecla "Tab" y el keyCode que nos dice cuál fue el número de la tecla que fue presionada.
+
+Voy a limpiar la consola y voy a hacer la prueba ahora con otra tecla. Si presiono "Espacio", me imprime la información de la tecla de espacio. Entonces, nos dice "Space" es el code. La key también nos indica que fue espacio y nos abre unas comillas y dentro de las comillas está vacío. Y el keyCode que fue en la tecla número 32.
+
+Entonces, viendo que el key del "Espacio" es solo las comillas con nada adentro, ¿cuál sería la propiedad que podríamos escoger para realizar la comparación dentro de los paréntesis de nuestra condición? Creo que sería más fácil de utilizar el code porque nos trae la información del nombre de la tecla y eso podemos compararlo con el texto que coloqué dentro de las condiciones. Vamos a verlo mejor en el código.
+
+El parámetro es evento, entonces, si yo coloco un console.log de evento.code, puedo ver esa información cuando yo presiono alguna tecla. Vamos a verlo aquí nuevamente en la consola. Voy a limpiar aquí, voy a presionar "Tabulador", presionar "Espacio", me dice que presioné "Space". Si me presiono "Tabulador", me dice que presiona "Tab". Si presiono "Enter", me presioné "Enter".
+
+Entonces, este "Space" que es el code, yo puedo estar comparándolo con el texto que coloqué dentro de las condiciones.
+
+Sabemos que es space, no espacio como yo había colocado. Entonces, aquí podría estar diciendo space y puedo comprobar esta condición. ¿Cómo hago esta condición? Puedo decir que evento.code tiene que ser igual a space. ¿Cómo digo que va a ser igual?
+
+¿Será que si coloco el igual va a realizar esta comparación? No, porque el igual en JavaScript o en los lenguajes de programación es de asignación. Para usar el operador de igualdad, se utilizan dos iguales (==). También puedo utilizar el operador de igualdad estricta que son tres iguales (===), pero primero vamos a probar si este código está funcionando.
+
+Dentro del console.log puedo pasar este código. Puedo decir igual igual a, abro mis comillas, space para probar si el código está funcionando. Vamos a ver en consola qué sucede.
+
+Voy a actualizar el navegador, limpio la consola, me posiciono con "Tabulador" en el botón de la tecla Pom y si clico en "Espacio" con el teclado me dice false (falso). ¿Por qué me está diciendo falso? Vamos a entender aquí en el código, debería estar diciéndome true (verdadero).
+
+Ok, entonces tenemos evento.code que va a ser igual al texto space. Pero el texto Space debería empezar con "S" mayúscula. Vamos a colocar, dentro del if, el texto Space para que pueda hacer la comparación.
+
+Y en el console.log yo puedo pasar este código también para probar a ver si está haciendo realmente la función. Entonces aquí sería Space con "S" mayúscula. Vamos a ver si está funcionando.
+
+Voy a actualizar y limpiar la consola. Después, me posiciono con "Tabulador" sobre la tecla Pom. Di doy "Espacio" me dice que es verdadero. Si me posiciono en "Tab", me está diciendo que es falso porque presioné el "Tabulador". Si presiono "Enter", me dice otra vez que es falso. Entonces el código está funcionando.
+
+Como mencioné, también dentro de JavaScript y en los lenguajes de programación, tenemos operadores de igualdad. En nuestro caso, no es ideal que trabajemos con el operador de igualdad normal de los dos iguales, es mejor que trabajemos con el operador de igualdad estricta que son los tres iguales. Vamos a ver el porqué en la consola.
+
+En la consola, si yo digo que 1 es igual a 1 entre comillas simples (1 == '1'), me dice que es true. Ustedes ven, esto es un número y este es un texto, nos está diciendo que es verdadero.
+
+En cambio, con el operador de estricta igualdad, si yo digo que 1 es igual a 1 entre comillas (1 === '1'), me dice que es false. Eso porque el operador de estricta igualdad verifica no solo el valor, sino que también el tipo de dato. Aquí comparamos un número con un texto, por eso nos dice que es falso.
+
+Dentro de nuestra lógica, es mejor utilizar el operador de estricta igualdad para no tener ningún problema con nuestro código.
+
+
+tecla.onclick = function (){
+    playSonido(idAudio);
+};
+
+tecla.onkeydown = function(evento){
+    console.log(evento.code=='Space')
+    if (evento.code === 'Space'){
+        tecla.classList.add('activa');
+    }
+}
+
+tecla.onkeyup = function(){
+       tecla.classList.remove('activa');
+}
+
+Ahora que ya sabemos cómo podemos obtener esta información basada en el evento del teclado y está funcionando nuestro código, ahora necesitamos realizar el mismo código hacia la tecla "Enter" que es la segunda tecla que queremos que active esa clase, o sea, coloque el destaque rojo en el botón. Para eso, nos vemos en el siguiente video.
+
+
+//En el vídeo anterior, agregamos las condiciones a nuestro código para que se añadiera la clase activa a las teclas de Alura Midi solo cuando presionamos la tecla de espacio.
+
+Incluso podemos realizar la prueba. Si uso "Tabulador" para posicionarme en la tecla Pom, y presiono "Espacio", se resalta el fondo del botón en rojo cuando presiono la tecla. Pero ahora necesitamos reproducir lo mismo para la tecla "Enter", porque si me posiciono en la tecla Clap y presiono "Enter", se reproduce el sonido, pero vemos que el botón no tiene ese destaque rojo en el foco. Vamos al código.
+
+¿Cómo podríamos hacer esto? Podríamos utilizar la misma lógica que usamos para la tecla de "Espacio". Podría abrir el if nuevamente, abrimos paréntesis y llaves. Siempre es bueno crear la estructura completa, porque así, luego no nos faltan llaves o no falta cerrar algún paréntesis y no tenemos errores en el código.
+
+Dentro de las condiciones que voy a pasar para el if en los paréntesis, puedo llamar a evento.code, que va a ser estrictamente igual (===) a la tecla "Enter". Y aquí abro comillas simples y pongo la primera letra de Enter en mayúscula. ¿Por qué? Porque cuando presionamos la tecla, vemos en consola que la "E" del "Enter" es mayúscula.
+
+JavaScript es sensible a minúsculas y mayúsculas. Tenemos que estar atentos a este tipo de cosas, porque si no, nos generan errores en el código. O no funciona de la manera que queremos nuestra aplicación.
+
+Entonces, evento.code nos devuelve la propiedad "Enter" en mayúsculas, y lo podemos comparar con el "Enter" que estoy poniendo en el texto dentro de la condición.
+
+Y aquí podríamos repetir el código que tenemos en la línea 22, que es el de agregar la clase activa. Voy a dar "Ctrl + C", luego dentro de las llaves del código del "Enter", pego con "Ctrl + V".
+
+Podemos hasta colocar este console.log que utilizamos para la tecla "Space", puedo cortarlo y puedo pegarlo en la parte de abajo del "Enter", y cambiamos también dentro del console.log, colocamos 'Enter' para verificar ahora la tecla "Enter".
+
+tecla.onkeydown = function(evento){
+
+    if (evento.code === 'Space' || evento.code === 'Enter'){
+        tecla.classList.add('activa');
+    }
+    console.log(evento.code === 'Space' || evento.code === 'Enter')
+}
+
+Vamos entonces al navegador para ver si esto está funcionando. Voy a abrir el DevTools, un clic derecho a "Inspeccionar", en la parte superior, "Console", voy a limpiar el DevTools. Me voy a posicionar en una tecla de la Alura Midi con "Tabulador", si presiono "Enter", me dice que es true, que está funcionando el código.
+
+Voy a presionar "Tabulador" para que aparezca falso ahora, porque no es la tecla que estamos colocando dentro de la condición. Si vuelvo a presionar la tecla "Enter", vuelve a decir que es true, el código está funcionando. Y lo mismo está realizando con la barra de espacio.
+
+Pero, si volvemos al código, tenemos repetición de código acá, pues repetimos un código para agregar esta misma instrucción, solo que con otra tecla.
+
+¿Qué podríamos hacer para crear un if mucho más completo? Colocar esta condición del "Enter" que tenemos en la línea 24, en un mismo if. Voy a seleccionar esta condición, "Ctrl + X", la voy a cortar y la voy a pegar aquí al lado de la condición que tenemos en la línea 21.
+
+Y este código de la línea 24 a la 27 que acabamos de crear, ya no lo necesitamos. Si ven, aquí me está saltando un error en la línea 21, porque estoy llamando un evento y no estoy colocando nada.
+
+Aquí lo ideal sería que dijéramos "si la tecla "Espacio" es presionada o la tecla "Enter" es presionada". Entonces, podríamos colocar un o para hacer referencia, una letra "o" normal. Si una de esas teclas fue presionada, entonces que se agregue la clase activa, que es ese destaque rojo al botón cuando es presionada. Pero, en los lenguajes de programación, esta letra "o", no existe. Hay operadores que podríamos utilizar, como el operador OR.
+
+¿Cómo identificamos este operador OR? Este operador lo podemos agregar con doble barra recta (||). Este operador OR, es un operador lógico, un operador de alternancia. ¿Qué hace exactamente? Evalúa estas dos condiciones. Si alguna de estas dos condiciones es verdadera, entonces ejecuta lo que está dentro de las llaves. Por lo tanto, alguna de estas dos condiciones debe ser verdadera.
+
+¿Y qué sucede? Para entenderlo mejor. Cuando presionamos la tecla de "Espacio" en el teclado de la computadora, no estaremos presionando al mismo tiempo la tecla "Enter". Entonces, evalúa si presionamos "Espacio" o "Enter", y ejecuta el código que tenemos en la línea 22.
+
+Pero vamos a verlo en el código para entender mejor lo que está sucediendo. Incluso podemos agregar un console.log aquí para verlo en la consola. Voy a crear un console.log. Abro los paréntesis y voy a copiar este código que hemos creado. Vamos a pegarlo dentro del console.log para ver qué me informa en la consola.
+
+Vamos al navegador. Voy a limpiar el navegador. Y vamos a probar. Me posiciono con "Tabulador" sobre la tecla Pom. Si presiono "Espacio", me dice que es true. Ahora voy a presionar "Tabulador" y me dirá que es false, porque estoy presionando la tecla "Tab". Ahora si presiono la tecla "Enter", me dirá que es true. Y ahí está funcionando nuestra lógica para los botones. Está activando la clase activa.
+
+Voy a presionar "Enter" nuevamente. Está activando ese destaque rojo, que indica que la persona usuaria está presionando la tecla. Está agregando el destaque al botón. Entonces, nuestro Alura Midi está funcionando. Las teclas están reproduciendo los sonidos y tenemos todas las funcionalidades completas.
+
+Podemos probar la navegación por teclado acá. Ya movimos, presiono el "Enter", está agregando ese destaque rojo en el botón. Si presiono la tecla de "Espacio", también agrega ese destaque en el botón.
+
+Con esto logramos realizar toda la accesibilidad, la navegabilidad por teclado del Alura Midi y completar todas las funcionalidades de nuestra aplicación.
+
+
